@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include sentiment *.css
+recursive-include sentiment *.csv
+recursive-include sentiment *.html
+recursive-include sentiment *.ico
+recursive-include sentiment *.js
+recursive-include sentiment *.json
+recursive-include sentiment *.md
+recursive-include sentiment *.png
+recursive-include sentiment *.py
+recursive-include sentiment *.svg
+recursive-include sentiment *.txt
+recursive-exclude sentiment *.pyc
