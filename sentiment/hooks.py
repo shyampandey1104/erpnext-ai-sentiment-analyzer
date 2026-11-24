@@ -4,7 +4,7 @@
 app_name = "sentiment"
 app_title = "Erpnext Ai Sentiment Analyzer"
 app_publisher = "Shyamkumar Pandey"
-app_description = "Erpnext Ai Sentiment Analyzer for Frappe and ERPNext"
+app_description = "Erpnext Ai Sentiment Analyzer - Enterprise Multi-DocType Solution for Frappe & ERPNext"
 app_email = "shyampandey1104@gmail.com"
 app_license = "MIT"
 
@@ -16,16 +16,22 @@ app_include_js = "/assets/sentiment/js/sentiment.bundle.js"
 # Document Events
 # ---------------
 doc_events = {
-    "DocType Event": {
-        "on_submit": "sentiment.engine.on_document_submit",
-        "on_cancel": "sentiment.engine.on_document_cancel"
+    "Erpnext Ai Sentiment Analyzer Entry": {
+        "validate": "sentiment.services.validator.EnterpriseValidationEngine.validate_compliance_rules",
+        "on_submit": "sentiment.services.integration_service.EnterpriseIntegrationService.verify_remote_status"
     }
 }
 
-# Scheduled Tasks
-# ---------------
+# Scheduled Background Tasks
+# --------------------------
 scheduler_events = {
+    "hourly": [
+        "sentiment.tasks.hourly_sync"
+    ],
     "daily": [
-        "sentiment.engine.daily_scheduled_sync"
+        "sentiment.tasks.daily_reconciliation"
+    ],
+    "weekly": [
+        "sentiment.tasks.weekly_digest"
     ]
 }
